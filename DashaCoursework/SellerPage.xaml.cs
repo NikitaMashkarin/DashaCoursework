@@ -16,23 +16,15 @@ using System.Windows.Shapes;
 namespace DashaCoursework
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для SellerPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SellerPage : Page
     {
-        public MainWindow()
+        private int id;
+        public SellerPage(int id)
         {
             InitializeComponent();
-            MainFrame.Navigate(new AuthPage());
-            LoadWorkers();
-        }
-
-        private void LoadWorkers()
-        {
-            using (var context = courseworkEntities.GetContext())
-            {
-                var workers = context.User.ToList();
-            }
+            this.id = id;
         }
     }
 }

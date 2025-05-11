@@ -7,6 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="380"/>
+        </Grid.RowDefinitions>
+        <Image Source="/logo.PNG/" HorizontalAlignment="Left" Margin="28,0,0,0"></Image>
+        <TextBlock Text="ТОВАРНЫЙ МИР" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI"></TextBlock>
+        <Grid Background ="#f7ebdf" Panel.ZIndex="-3"></Grid>
+        <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
