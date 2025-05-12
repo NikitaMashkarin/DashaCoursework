@@ -9,6 +9,48 @@
       Title="SellerPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Button Content="Выйти" Width="100" Height="30"
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            Margin="90,218,0,0"
+            Click="BtnBack_Click"
+            Grid.Row="1" Grid.Column="2" />
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Продавец"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Grid.Row="0"
+                       Margin="0,10,0,0" />
+
+            <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="312">
+                <Button Content="Начать продажу" Width="238" Height="40" Margin="0,10" Click="BtnTasks_Click"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                    <WrapPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
+                        <TextBlock Text="Номер чека" FontSize="16"></TextBlock>
+                        <TextBox x:Name="TaskIdTextBox" Width="100" Height="30" Margin="0,0,10,0" TextChanged="ReceiptIdTextBox_TextChanged" />
+                    </WrapPanel>
+                    <Button Content="Оформить возврат" Width="129" Height="51" Click="BtnRegisterTask_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

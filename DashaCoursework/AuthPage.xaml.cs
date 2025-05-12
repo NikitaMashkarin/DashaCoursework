@@ -61,12 +61,12 @@ namespace DashaCoursework
                         }
                     case 2:
                         {
-                            Manager.MainFrame.Navigate(new SellerPage(user.Id));
+                            Manager.MainFrame.Navigate(new ManagerPage(user.Id));
                             break;
                         }
                     case 3:
                         {
-                            Manager.MainFrame.Navigate(new ManagerPage(user.Id));
+                            Manager.MainFrame.Navigate(new SellerPage(user.Id));
                             break;
                         }
                     default:

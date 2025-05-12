@@ -23,6 +23,7 @@ namespace DashaCoursework
         public MainWindow()
         {
             InitializeComponent();
+            Manager.MainFrame = MainFrame;
             MainFrame.Navigate(new AuthPage());
             LoadWorkers();
         }
@@ -34,5 +35,6 @@ namespace DashaCoursework
                 var workers = context.User.ToList();
             }
         }
+
     }
 }
