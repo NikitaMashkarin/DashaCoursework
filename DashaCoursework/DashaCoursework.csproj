@@ -78,6 +78,9 @@
     <Compile Include="Category.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CreateProductPage.xaml.cs">
+      <DependentUpon>CreateProductPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CreateReceiptPage.xaml.cs">
       <DependentUpon>CreateReceiptPage.xaml</DependentUpon>
     </Compile>
@@ -124,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AuthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateProductPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

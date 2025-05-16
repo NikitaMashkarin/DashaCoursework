@@ -72,13 +72,15 @@ namespace DashaCoursework
                     return;
                 }
 
+                decimal productPrice = (decimal)saleItem.Sale.Product1.Price;
+                decimal refundAmount = productPrice * quantity;
+
                 saleItem.Sale.Count -= quantity;
-                saleItem.Sale.Sum = saleItem.Sale.Count * saleItem.Sale.Product1.Price;
+                saleItem.Sale.Sum = saleItem.Sale.Count * productPrice;
 
                 if (saleItem.Sale.Count == 0)
                 {
                     context.Sale_of_receipt.Remove(saleItem.SaleOfReceipt);
-
                     context.Sale.Remove(saleItem.Sale);
                 }
 
@@ -88,10 +90,19 @@ namespace DashaCoursework
                     product.Count += quantity;
                 }
 
+                var receipt = context.Receipt.FirstOrDefault(r => r.Id == receiptId);
+                if (receipt != null)
+                {
+                    receipt.Sum -= refundAmount;
+
+                    if (receipt.Sum < 0)
+                        receipt.Sum = 0;
+                }
+
                 try
                 {
                     context.SaveChanges();
-                    MessageBox.Show("Возврат выполнен успешно!", "Успешно", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show($"Возврат выполнен успешно! Возвращено: {refundAmount:C2}", "Успешно", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     LoadProducts();
                 }
@@ -101,6 +112,7 @@ namespace DashaCoursework
                 }
             }
         }
+
 
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)

@@ -26,5 +26,30 @@ namespace DashaCoursework
             InitializeComponent();
             this.id = id;
         }
+
+        private void Btn1_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new CreateProductPage());
+        }
+
+        private void Btn2_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn3_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn4_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.GoBack();
+        }
     }
 }
