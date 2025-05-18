@@ -1,0 +1,181 @@
+﻿Название Бд - coursework
+
+Скрипт таблиц:
+
+CREATE TABLE [dbo].[Category](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Category] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Post]    Script Date: 19.05.2025 0:28:33 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Post](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Post] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Product]    Script Date: 19.05.2025 0:28:33 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Product](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+	[Price] [money] NULL,
+	[Count] [int] NULL,
+	[Category] [int] NULL,
+	[Delivery_date] [date] NULL,
+ CONSTRAINT [PK_Product] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Receipt]    Script Date: 19.05.2025 0:28:33 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Receipt](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Sum] [money] NULL,
+	[Date_create] [date] NULL,
+	[User] [int] NULL,
+ CONSTRAINT [PK_Receipt] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Sale]    Script Date: 19.05.2025 0:28:33 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Sale](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Product] [int] NULL,
+	[Count] [int] NULL,
+	[Sale_date] [date] NULL,
+	[Sum] [money] NULL,
+ CONSTRAINT [PK_Sale] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Sale_of_receipt]    Script Date: 19.05.2025 0:28:33 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Sale_of_receipt](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Id_Receipt] [int] NULL,
+	[Id_Sale] [int] NULL,
+ CONSTRAINT [PK_Sale_of_receipt] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[User]    Script Date: 19.05.2025 0:28:33 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[User](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Login] [nvarchar](50) NULL,
+	[Password] [nvarchar](50) NULL,
+	[Post] [int] NULL,
+	[Name] [nvarchar](150) NULL,
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Product]  WITH CHECK ADD  CONSTRAINT [FK_Product_Category] FOREIGN KEY([Category])
+REFERENCES [dbo].[Category] ([Id])
+GO
+ALTER TABLE [dbo].[Product] CHECK CONSTRAINT [FK_Product_Category]
+GO
+ALTER TABLE [dbo].[Receipt]  WITH CHECK ADD  CONSTRAINT [FK_Receipt_User] FOREIGN KEY([User])
+REFERENCES [dbo].[User] ([Id])
+GO
+ALTER TABLE [dbo].[Receipt] CHECK CONSTRAINT [FK_Receipt_User]
+GO
+ALTER TABLE [dbo].[Sale]  WITH CHECK ADD  CONSTRAINT [FK_Sale_Product] FOREIGN KEY([Product])
+REFERENCES [dbo].[Product] ([Id])
+GO
+ALTER TABLE [dbo].[Sale] CHECK CONSTRAINT [FK_Sale_Product]
+GO
+ALTER TABLE [dbo].[Sale_of_receipt]  WITH CHECK ADD  CONSTRAINT [FK_Sale_of_receipt_Receipt] FOREIGN KEY([Id_Receipt])
+REFERENCES [dbo].[Receipt] ([Id])
+GO
+ALTER TABLE [dbo].[Sale_of_receipt] CHECK CONSTRAINT [FK_Sale_of_receipt_Receipt]
+GO
+ALTER TABLE [dbo].[Sale_of_receipt]  WITH CHECK ADD  CONSTRAINT [FK_Sale_of_receipt_Sale] FOREIGN KEY([Id_Sale])
+REFERENCES [dbo].[Sale] ([Id])
+GO
+ALTER TABLE [dbo].[Sale_of_receipt] CHECK CONSTRAINT [FK_Sale_of_receipt_Sale]
+GO
+ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Post] FOREIGN KEY([Post])
+REFERENCES [dbo].[Post] ([Id])
+GO
+ALTER TABLE [dbo].[User] CHECK CONSTRAINT [FK_User_Post]
+GO
+USE [master]
+GO
+ALTER DATABASE [coursework] SET  READ_WRITE 
+GO
+
+
+Данные:
+INSERT INTO [dbo].[Category] ([Name]) VALUES
+('Электроника'),
+('Смартфоны и аксессуары'),
+('Компьютеры и ноутбуки'),
+('Бытовая техника'),
+('Телевизоры и аудио'),
+('Фото и видеокамеры'),
+('Одежда и обувь'),
+('Аксессуары и украшения'),
+('Косметика и парфюмерия'),
+('Здоровье и уход'),
+('Спорт и активный отдых'),
+('Туризм и путешествия'),
+('Дом и интерьер'),
+('Мебель'),
+('Освещение'),
+('Товары для животных'),
+('Детские товары и игрушки'),
+('Канцелярия и книги'),
+('Автотовары и аксессуары'),
+('Сад и огород'),
+('Инструменты и ремонт'),
+('Продукты питания и напитки'),
+('Алкогольные напитки'),
+('Подарки и сувениры'),
+('Хобби и творчество'),
+('Музыка и фильмы'),
+('Ювелирные изделия'),
+('Часы и оптика'),
+('Товары для школы'),
+('Электротранспорт и велосипеды');
+
+INSERT INTO [dbo].[User] ([Login], [Password], [Post], [Name]) 
+VALUES ('admin', 'admin', 1, 'админ админ');

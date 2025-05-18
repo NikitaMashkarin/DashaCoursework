@@ -3,17 +3,35 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DashaCoursework"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Товарный мир" Height="500" Width="900"
+        WindowStartupLocation="CenterScreen"
+        Background="#f7ebdf">
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="380"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image Source="/logo.PNG/" HorizontalAlignment="Left" Margin="28,0,0,0"></Image>
-        <TextBlock Text="ТОВАРНЫЙ МИР" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI"></TextBlock>
-        <Grid Background ="#f7ebdf" Panel.ZIndex="-3"></Grid>
-        <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden"/>
+
+        <!-- Верхняя панель -->
+        <Grid Grid.Row="0" Background="#3E4A61" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="/logo.PNG" Height="72" Margin="8,8,116,0" VerticalAlignment="Top"/>
+
+            <TextBlock Text="ТОВАРНЫЙ МИР" 
+                       FontSize="30" 
+                       Foreground="White" 
+                       FontWeight="Bold" 
+                       VerticalAlignment="Top" 
+                       HorizontalAlignment="Center" Grid.Column="1" Margin="0,13,0,0" />
+        </Grid>
+
+        <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden" Background="#f7ebdf"/>
     </Grid>
 </Window>

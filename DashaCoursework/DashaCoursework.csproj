@@ -100,11 +100,17 @@
     <Compile Include="RegPage.xaml.cs">
       <DependentUpon>RegPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ReportByDatePage.xaml.cs">
+      <DependentUpon>ReportByDatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReturnPage.xaml.cs">
       <DependentUpon>ReturnPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sale.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SalesAnalysisPage.xaml.cs">
+      <DependentUpon>SalesAnalysisPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Sale_of_receipt.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
@@ -112,11 +118,17 @@
     <Compile Include="SellerPage.xaml.cs">
       <DependentUpon>SellerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StockControlPage.xaml.cs">
+      <DependentUpon>StockControlPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WriteOffProductPage.xaml.cs">
+      <DependentUpon>WriteOffProductPage.xaml</DependentUpon>
     </Compile>
     <Page Include="AddProductPage.xaml">
       <SubType>Designer</SubType>
@@ -171,11 +183,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ReportByDatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ReturnPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SalesAnalysisPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SellerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StockControlPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WriteOffProductPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -228,6 +256,7 @@
       <DependentUpon>BaseModel.edmx</DependentUpon>
       <LastGenOutput>BaseModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="DB.txt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

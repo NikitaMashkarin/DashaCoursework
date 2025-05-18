@@ -9,6 +9,45 @@
       Title="AdministratorPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Button Content="Выйти" Width="100" Height="30"
+        HorizontalAlignment="Left" VerticalAlignment="Top"
+        Margin="90,278,0,0"
+        Click="BtnBack_Click"
+        Grid.Row="1" Grid.Column="2" />
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                   FontSize="28"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Grid.Row="0"
+                   Margin="0,10,0,0" ><Run Language="ru-ru" Text="Администратор"/></TextBlock>
+
+            <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="312">
+                <Button Content="Регестрация сотрудника" Width="238" Height="40" Margin="0,10" Click="Btn1_Click"/>
+                <Button Content="Создать отчет" Width="238" Height="40" Margin="0,10" Click="Btn2_Click"/>
+                <Button Content="Анализ продаж" Width="238" Height="40" Margin="0,10" Click="Btn3_Click"/>
+                <Button Content="Контроль остатков" Width="238" Height="40" Margin="0,10" Click="Btn4_Click"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>
+

@@ -25,7 +25,7 @@ namespace DashaCoursework
             InitializeComponent();
         }
 
-        private void BtnSingIn_Click(object sender, RoutedEventArgs e)
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errStr = new StringBuilder();
 
@@ -88,44 +88,15 @@ namespace DashaCoursework
             {
                 context.User.Add(new User
                 {
-                    Login = LogintxtBox.Text,
-                    Password = PwdtxtBox.Text,
+                    Login = PwdtxtBox.Text,
+                    Password = Extra3txtBox.Text,
                     Post = post,
                     Name = FNameTxtBox.Text + " " + LogintxtBox.Text
                 });
 
                 context.SaveChanges();
             }
-            using (var context = new courseworkEntities())
-            {
-                var user = context.User
-                          .FirstOrDefault(u => u.Login.Trim() == LogintxtBox.Text);
-
-                switch (post)
-                {
-                    case 1:
-                        {
-                            Manager.MainFrame.Navigate(new AdministratorPage(user.Id));
-                            break;
-                        }
-                    case 2:
-                        {
-                            Manager.MainFrame.Navigate(new ManagerPage(user.Id));
-                            break;
-                        }
-                    case 3:
-                        {
-                            Manager.MainFrame.Navigate(new SellerPage(user.Id));
-                            break;
-                        }
-                }
-            }
-        }
-
-
-        private void BtnLogin_Click(object sender, RoutedEventArgs e)
-        {
-            Manager.MainFrame.Navigate(new AuthPage());
+            Manager.MainFrame.GoBack();
         }
 
     }

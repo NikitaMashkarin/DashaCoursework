@@ -69,8 +69,7 @@
             </Grid>
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,218,0,0" Height="53" VerticalAlignment="Top">
-                <Button x:Name="BtnSingIn" Content="Войти" Width="100" Height="33" Click="BtnSingIn_Click"/>
-                <Button x:Name="BtnLogIn" Content="Уже есть аккаунт?" Width="150" Height="33" Margin="10" Click="BtnLogin_Click"/>
+                <Button x:Name="BtnLogIn" Content="Завершить регистрацию" Width="150" Height="33" Margin="10" Click="BtnLogin_Click"/>
             </StackPanel>
         </Grid>
     </Grid>
