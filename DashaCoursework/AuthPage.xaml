@@ -38,7 +38,7 @@
                     <TextBlock Text="Пароль" FontSize="16"></TextBlock>
                     <TextBox x:Name="PswdTxtBox" VerticalContentAlignment="Center" Width="197" RenderTransformOrigin="0.487,1.88"/>
                 </WrapPanel>
-                <Button x:Name="BtnLogin" Content="Войти" Grid.Row="3" Click="BtnLogin_Click" Margin="48,10,48,10"/>
+                <Button x:Name="BtnLogin" Content="Войти" Grid.Row="3" Click="BtnLogin_Click" Width="154" Height="36"/>
             </Grid>
         </Grid>
     </Grid>
